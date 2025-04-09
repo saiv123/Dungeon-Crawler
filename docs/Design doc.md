@@ -22,7 +22,6 @@ This game blends the thrill of D&D-inspired stat crunching with quick, casual Di
 
 ## 3. Core Gameplay Loop
 
-
 - **Start Action:** (e.g., Player uses `/hunt` or `/battle`)
 - **Middle:** Fight → Earn XP → Gain loot
 - **End:** Equip loot, level up, repeat
