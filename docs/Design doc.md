@@ -1,4 +1,4 @@
-# 📘 Game Design Document
+# Game Design Document
 
 ## 1. Game Overview
 
