@@ -37,7 +37,7 @@ subject to change
   |     |-- inventory.py
   |     |-- shop.py
   |-- utils/
-  |     |-- enums.py
+  |     |-- enum.py
   |     |-- parser.py
   |     |-- lootgen.py
 .env
@@ -52,12 +52,13 @@ Describe each main folder or module and its role.
 - **Tables and Relations:**
 # TODO: what does the schema look like
 
-| Table       | Purpose                                                                |
-| ----------- | ---------------------------------------------------------------------- |
-| `players`   | ID,Discord snowflake ID,Stores user stats, level, xp                   |
-| `inventory` | ID, list of item_ID                                                    |
-| `equipment` | ID, head, chest, legs, boots, main hand 1, main hand 2, ring, neckless |
-| `items`     | ID, item_ID, name                                                      |
+| Table       | Purpose                                                                    |
+| ----------- | -------------------------------------------------------------------------- |
+| `players`   | ID(pk),Discord snowflake ID, list of statID, level, xp                     |
+| `inventory` | ID(pk), item 1, item 2, ..., item 10                                       |
+| `equipment` | ID(pk), head, chest, legs, boots, main hand 1, main hand 2, ring, neckless |
+| `items`     | item_ID(pk), name, type, list of statID                                    |
+| `stat`      | statID(pk), ATK, DEF, ...                                                  |
 
 ---
 
