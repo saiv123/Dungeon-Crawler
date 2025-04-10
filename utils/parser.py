@@ -5,7 +5,7 @@ from utils.enums import ItemID, Rarity
 from utils.enums import StatTypes
 
 # Configure logging (you can adjust the level and format as needed)
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def split_stat(stat_str: str)-> tuple[str, int]:
     """
