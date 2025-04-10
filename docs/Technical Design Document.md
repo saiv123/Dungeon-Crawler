@@ -27,21 +27,17 @@
 ---
 
 ## 3. Modules / Folder Structure
-
-Example:
-
+subject to change
 ```lua
 /bot
-  |-- main.py
+  |-- bot.py
+  |-- game.py
   |-- commands/
   |     |-- battle.py
   |     |-- inventory.py
+  |     |-- shop.py
   |-- utils/
-  |     |-- db.py
-  |     |-- rng.py
-  |-- models/
-  |     |-- player.py
-  |     |-- item.py
+  |     |-- lootgen.py
 .env
 ```
 
@@ -54,11 +50,12 @@ Describe each main folder or module and its role.
 - **Tables and Relations:**
 # TODO: what does the schema look like
 
-| Table       | Purpose                                             |
-| ----------- | --------------------------------------------------- |
-| `players`   | Stores user stats, level, xp, items, equipped items |
-| `inventory` | Player-item linking table                           |
-| `battles`   | Tracks ongoing/previous fights                      |
+| Table       | Purpose                                                                |
+| ----------- | ---------------------------------------------------------------------- |
+| `players`   | ID,Discord snowflake ID,Stores user stats, level, xp                   |
+| `inventory` | ID, list of item_ID                                                    |
+| `equiment`  | ID, head, chest, legs, boots, main hand 1, main hand 2, ring, neckless |
+| `items`     | ID, item_ID, name                                                      |
 
 ---
 
