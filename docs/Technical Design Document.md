@@ -37,6 +37,8 @@ subject to change
   |     |-- inventory.py
   |     |-- shop.py
   |-- utils/
+  |     |-- enums.py
+  |     |-- parser.py
   |     |-- lootgen.py
 .env
 ```
@@ -54,7 +56,7 @@ Describe each main folder or module and its role.
 | ----------- | ---------------------------------------------------------------------- |
 | `players`   | ID,Discord snowflake ID,Stores user stats, level, xp                   |
 | `inventory` | ID, list of item_ID                                                    |
-| `equiment`  | ID, head, chest, legs, boots, main hand 1, main hand 2, ring, neckless |
+| `equipment` | ID, head, chest, legs, boots, main hand 1, main hand 2, ring, neckless |
 | `items`     | ID, item_ID, name                                                      |
 
 ---
