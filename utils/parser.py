@@ -58,14 +58,14 @@ def itemID_to_json(itemID: str, name: str) -> dict:
     stats = itemID_segments[1:-1]
     rarity = itemID_segments[-1]
     try:
-        itemObject["item_id"] = get_enum_name_from_value(itemID, ItemID)
+        itemObject["item_type"] = get_enum_name_from_value(itemID, ItemID)
     except ValueError as e:
         logging.error(e.args[0])  # Log the error
         return None
     for stat in stats:
         strStat, value = split_stat(stat)
         try:
-            itemObject[get_enum_name_from_value(strStat, StatTypes)] = value
+            itemObject[get_enum_name_from_value(strStat, StatTypes)] = int(value)
         except ValueError as e:
             logging.error(e.args[0])  # Log the error
             return None
@@ -75,3 +75,57 @@ def itemID_to_json(itemID: str, name: str) -> dict:
         logging.error(e.args[0])  # Log the error
         return None
     return itemObject
+
+def json_to_itemID(item_json: dict) -> str:
+    """
+    Convert a JSON dict to an itemID string.
+    
+    Args:
+        item_json (dict): The JSON dict to convert.
+        
+    Returns:
+        str: The itemID string representation of the JSON dict.
+    
+    Expected Structure:
+        item_json (dict): A dictionary with the following keys:
+            - "name" (str): The name of the item.
+            - "item_type" (str): The type of the item, corresponding to a valid `ItemID` enum name.
+            - "rarity" (str): The rarity of the item, corresponding to a valid `Rarity` enum name.
+            - Additional keys (str): Stat types corresponding to valid `StatTypes` enum names, with their values as integers.
+
+        logging.error('Missing \'name\' key in item_json')
+        Example input: {"name": "Test Item", "item_type": "i01", "rarity": "E", "ATK": 10, "SPD": 5, "LSC": 2, "LS": 10}
+        This will convert the JSON dict back to an itemID string.
+    """
+    try:
+        name = item_json["name"]
+    except KeyError:
+        logging.error("Missing 'name' key in item_json")
+        return None
+    try:
+        item_type = item_json["item_type"]
+        if item_type not in [item.name for item in ItemID]:
+            logging.error(f"Invalid 'item_type': {item_type}")
+            return None
+    except KeyError:
+        logging.error("Missing 'item_type' key in item_json")
+        return None
+    try:
+        rarity = item_json["rarity"]
+        if rarity not in [rar.name for rar in Rarity]:
+            logging.error(f"Invalid 'rarity': {rarity}")
+            return None
+    except KeyError:
+        logging.error("Missing 'rarity' key in item_json")
+        return None
+    list_of_stats = []
+    for stat_key, value in item_json.items():
+        if stat_key not in ["name", "item_type", "rarity"]:  # Skip non-stat keys
+            if isinstance(value, (int, float, str)):  # Check if value is a primitive type
+                list_of_stats.append(stat_key + str(value))
+            else:
+                logging.warning(f"Skipping non-primitive stat: {stat_key} with value: {value}")
+    
+    stats_string = "-".join(list_of_stats)
+    itemID = f"{item_type}-{stats_string}-{rarity}"
+    return itemID
