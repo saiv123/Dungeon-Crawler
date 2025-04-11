@@ -37,3 +37,4 @@ class StatTypes(Enum):
     LIFESTEAL = "LS"
     HEALTH = "HP"
     MANA = "MP"
+    MANA_COST = "MPC"

@@ -1,3 +1,6 @@
+###for testing purposes only###
+
+
 from utils.parser import itemID_to_json, json_to_itemID
 
 id = "i01-ATK10-SPD5-LSC2-LS10-E"
