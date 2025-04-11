@@ -25,10 +25,10 @@ class TestParser(unittest.TestCase):
         name = "Test Item"
         expected_output = {
             "name": "Test Item",
-            "item_type": "ITEM_01",  # Replace with actual enum name
+            "item_type": "SWORD",  # Replace with actual enum name
             "ATTACK": 10,  # Replace with actual enum name
             "SPEED": 5,  # Replace with actual enum name
-            "LIFESTEAL_CRIT": 2,  # Replace with actual enum name
+            "LS_CHANCE": 2,  # Replace with actual enum name
             "LIFESTEAL": 10,  # Replace with actual enum name
             "rarity": "EPIC"  # Replace with actual enum name
         }
