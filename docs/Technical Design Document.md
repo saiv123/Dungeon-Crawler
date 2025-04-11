@@ -3,7 +3,7 @@
 - **Project Name:** work in progress
 - **Tech Stack:**
   - **Language:** Python 3.10 +
-  - **Discord API:** `discord interaction` (or alternative)
+  - **Discord API:** `discord interaction`
   - **Flask:** For API communication
   - **Database:** MSSQL
   - **Hosting:** Raspbian on Raspberry Pi
