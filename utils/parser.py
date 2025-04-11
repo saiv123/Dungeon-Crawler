@@ -54,7 +54,7 @@ def itemID_to_json(itemID: str, name: str) -> dict:
         Example input: "i01-ATK10-SPD5-LSC2-LS10-E"
         This will use the enum to get the itemID and rarity.
     """
-    itemObject = {
+    itemObject: dict = {
         "name": name,
     }
     itemID_segments = itemID.split("-")
