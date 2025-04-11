@@ -52,13 +52,15 @@ Describe each main folder or module and its role.
 - **Tables and Relations:**
 # TODO: what does the schema look like
 
-| Table       | Purpose                                                                    |
-| ----------- | -------------------------------------------------------------------------- |
-| `players`   | ID(pk),Discord snowflake ID, list of statID, level, xp                     |
-| `inventory` | ID(pk), item 1, item 2, ..., item 10                                       |
-| `equipment` | ID(pk), head, chest, legs, boots, main hand 1, main hand 2, ring, neckless |
-| `items`     | item_ID(pk), name, type, list of statID                                    |
-| `stat`      | statID(pk), ATK, DEF, ...                                                  |
+| Table         | Purpose                                                                                                    |
+| ------------- | ---------------------------------------------------------------------------------------------------------- |
+| `players`     | ID(pk),Discord snowflake ID, pstatID(fk), level, xp                                                        |
+| `inventory`   | ID(pk), item 1(fk), item 2(fk), ...(fk), item 10(fk)                                                       |
+| `equipment`   | ID(pk), head(fk), chest(fk), legs(fk), boots(fk), main hand 1(fk), main hand 2(fk), ring(fk), neckless(fk) |
+| `items`       | item_ID(pk), name, type, Rarity, list of istatID(fk)                                                       |
+| `Player stat` | pstatID(pk), ATK, DEF, SPD, HP, MP                                                                         |
+| `item stat`   | istatID(pk), ATK, DEF, SPD, LSC, LS, MPC, list of AttributeID(AID)(fk)                                     |
+| `attribute`   | AID(pk), name, value                                                                                       |
 
 ---
 
