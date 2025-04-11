@@ -15,14 +15,22 @@
 - **High-Level Overview:**
     - Diagram:
     ```
-    Discord Client ↔ Flask API ↔ Database
+    Discord Client ↔ Flask API(maybe .net app) ↔ Database
     ```
 - **Bot Runtime:**
     - Runs on Raspberry Pi
     - Git pull + restart service for CI/CD
 - **API Server:**
     - Flask server exposed via local IP only
-    - Handles DB logic, isolated from bot logic
+	    - Known
+	    - hard to keep uptime ie as a service
+	    - less resource intensive
+	    - need to install drivers
+	- .net app
+		- easier to keep uptime and logging as a service
+		- need to learn
+		- more resource intensive
+		- does not need drivers uses internal tools to connect with sql db
 
 ---
 
@@ -67,7 +75,6 @@ Describe each main folder or module and its role.
 ## 5. Key Systems & Logic
 
 Break down the key systems:
-
 ### Combat System
 - How turn-based combat is resolved
 - Timeout handling
