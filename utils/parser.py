@@ -7,17 +7,21 @@ from utils.enums import StatTypes
 # Configure logging (you can adjust the level and format as needed)
 logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
-def split_stat(stat_str: str)-> tuple[str, int]:
+def split_stat(stat_str: str) -> tuple[str, int]:
     """
     Split a stat string into its type and value.
-    args:
-        stat_str (str): The stat string to split.
-    returns:
-        tuple: A tuple containing the stat type and value.
     """
     for i, c in enumerate(stat_str):
         if c.isdigit():
-            return stat_str[:i], int(stat_str[i:])
+            stat_type = stat_str[:i]
+            value = int(stat_str[i:])
+            # Validate the stat type against the StatTypes enum
+            if stat_type not in StatTypes.__members__.values():
+                raise ValueError(f"Invalid stat type: {stat_type}")
+            return stat_type, value
+    # If no digits are found, return the stat type with a value of 0
+    if stat_str not in StatTypes.__members__.values():
+        raise ValueError(f"Invalid stat type: {stat_str}")
     return stat_str, 0
 
 def get_enum_name_from_value(value: str, enumtype: Enum) -> str:

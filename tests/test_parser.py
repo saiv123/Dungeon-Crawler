@@ -5,10 +5,21 @@ from ..utils.enums import ItemID, Rarity, StatTypes
 class TestParser(unittest.TestCase):
 
     def test_split_stat(self):
+        # Valid cases
         self.assertEqual(split_stat("ATK10"), ("ATK", 10))
         self.assertEqual(split_stat("SPD5"), ("SPD", 5))
         self.assertEqual(split_stat("LSC2"), ("LSC", 2))
-        self.assertEqual(split_stat("NoDigits"), ("NoDigits", 0))
+        self.assertEqual(split_stat("ATK"), ("ATK", 0))
+
+        # Invalid cases
+        with self.assertRaises(ValueError):
+            split_stat("NoDigits10")  # Invalid format
+        with self.assertRaises(ValueError):
+            split_stat("10")  # No stat type
+        with self.assertRaises(ValueError):
+            split_stat("")  # Empty string
+        with self.assertRaises(ValueError):
+            split_stat("ATK-10")  # Invalid format with special characters
 
     def test_get_enum_name_from_value(self):
         # Assuming ItemID, Rarity, and StatTypes enums are defined in utils.enums
