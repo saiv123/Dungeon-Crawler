@@ -63,7 +63,7 @@ Describe each main folder or module and its role.
 | Table         | Purpose                                                                                                    |
 | ------------- | ---------------------------------------------------------------------------------------------------------- |
 | `players`     | ID(pk),Discord snowflake ID, pstatID(fk), level, xp                                                        |
-| `inventory`   | ID(pk), item 1(fk), item 2(fk), ...(fk), item 10(fk)                                                       |
+| `inventory`   | ID(pk), slot(1to10), item_ID(fk)                                                                           |
 | `equipment`   | ID(pk), head(fk), chest(fk), legs(fk), boots(fk), main hand 1(fk), main hand 2(fk), ring(fk), neckless(fk) |
 | `items`       | item_ID(pk), name, type, Rarity, list of istatID(fk)                                                       |
 | `Player stat` | pstatID(pk), ATK, DEF, SPD, HP, MP                                                                         |
